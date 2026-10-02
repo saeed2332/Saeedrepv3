@@ -1,0 +1,395 @@
+# Alliance Surgical PLC – Monthly Close Playbook (Business Central)
+
+How Claude runs the PLC month end with Saeed every month: the order of work, how to talk Saeed
+through each step, which Business Central (BC) reports to request (with click-by-click
+instructions), the journal formats that BC accepts, and the lessons learned from the July,
+August and September 2026 closes.
+
+Source material this playbook is built on:
+- `MONTH-END MASTER HANDOVER.docx` and `MONTH-END CONTROL TRACKER.xlsx` (company SOPs).
+- `CC_SOPs__Handovers.xlsx` (original FC notes: recharges, Bupa, VAT, payroll).
+- The August 2026 close conversation (ChatGPT share "PLC AUG26") and the September 2026 close
+  with Claude.
+- The August 2026 archive in Google Drive: `PLC > 2026-2027 > 05 August 26 > Schedules / Journals`.
+- Microsoft Learn documentation for Business Central (links at the end).
+
+Entities: **PLC** (Alliance Surgical PLC) first, then **ASCH** (Corporate Health) and **PMI**
+(Alliance Health PMI). Financial year April–March. P01 = April … P06 = September.
+
+---
+
+## 1. How to work with Saeed (communication rules)
+
+These come directly from Saeed's feedback. Follow them every time.
+
+1. **One topic at a time, in the order in section 2.** Open each topic by saying in one or two
+   lines what we're doing and what I need. Finish with a clear "done → next is X". Saeed moves
+   on with "done, next".
+2. **Assume Saeed does not know BC.** Every report request gives the exact BC page name
+   (search with `Alt+Q`), every filter value in BC filter syntax, which columns must be visible,
+   how to export, and a suggested file name. Never just say "export the G/L".
+3. **Ask for all the reports needed for a topic up front**, not one at a time over several
+   turns. Saeed found it frustrating to be asked repeatedly.
+4. **Deliver journals in the exact BC format the first time** (section 5), as a spreadsheet,
+   ready to paste or publish. Saeed should never have to ask "in this format" twice. Say exactly
+   which cell range to copy, which BC journal or batch to paste into, and which column to start
+   in.
+5. **Corrections: give a corrected file, not "post the mistake and then an adjustment"**, unless
+   the wrong entry is already posted. If it is posted, give only the reversing or delta lines.
+   For example, the £70 TMD fix in August: Saeed wanted just the £70, not the whole journal again.
+6. **Never guess or plug.** Unsupported amounts are VERIFY/HOLD, listed with the evidence
+   needed. A prior month's amount is a template, not evidence.
+7. **Check what was posted.** After Saeed posts, ask for a fresh G/L export and confirm the
+   posting: document number, accounts, amounts, VAT, dimensions and dates.
+8. **Own mistakes plainly.** If an earlier statement was wrong, say so and give the corrected
+   position.
+9. **Keep it concise.** Use tables for amounts and short numbered steps for BC actions. Don't
+   explain close mechanics unless asked.
+10. **When Saeed lacks access** (Handelsbanken, Lloyds), draft a short Teams message to Jay.
+11. **Archive at the end of each entity's close.** Save the final correct schedules and journals
+    to the Drive month folder. Leave out corrections, undo journals and wrong versions.
+
+Standard opening for a new month:
+> "We're closing PLC <Month YY> (P0X). Step 1 is X. To start I need: [report list with BC
+> steps]. While you pull those, I'll roll forward last month's schedules from Drive."
+
+---
+
+## 2. PLC monthly flow (order of work)
+
+WD = working day (WD0 = first working day after month end). Each step lists what I request,
+what I produce, and the checks.
+
+### Step 0 – Set up (WD-1 / WD0)
+- **Drive:** create `NN Month YY` under `PLC > 2026-2027` with `Schedules` and `Journals`
+  subfolders, matching the August layout. Download last month's archive, which is the template.
+- **Request:** the PLC General Ledger Entries export (R1) for the month so far.
+- **Produce:** a Close Index workbook (Status / Recharges / Issues & Decisions tabs).
+
+### Step 1 – Gus backlog: unposted invoices
+Gus syncs invoices into BC through the API, but some land as **unposted** Sales or Purchase
+Invoices. Revenue or cost stuck there distorts the month and the invoice accrual.
+- **Request:** R2 (unposted Sales Invoices and Purchase Invoices lists), plus R3 (Gus unposted
+  invoice status export) if available.
+- **Check:** each purchase invoice must have its matching sales invoice. The company does not
+  take on cost without a sale. Look for duplicates and VAT-date errors.
+- **Talk Saeed through:** **Post Batch** (B5), one posting date at a time with the Work Date set
+  to that date. Leave Replace Posting/Document/VAT Date **off**. Never re-date invoices to today.
+
+### Step 2 – Intercompany recharges (WD0)
+| Customer | Copy from (latest clean posted invoice) | Lines | Notes |
+|---|---|---|---|
+| ACS | last month's ACS management recharge | 70100 £60,000 + Bupa (61600) for Marie Lee, Kaye Drew, Matthew Parks | No VAT. Next free ext. ref ACSnnn |
+| AMI | last month's rates/Bupa invoice | 66100 rates £4,200 (VERIFY vs 11th-floor bill) + Bupa NE/JG/SD/JM | No VAT. Ext AMI188 |
+| TMD | last month's Money Doctors invoice | 61600 Bupa (Christopher & Olivia Smith) | No VAT. Ext AS172 |
+| ACS + AMI | last month's "50% of Mike's retainer" invoices | 65500, 50/50 of Mike Davies' (Hood Street) retainer + expenses from his latest invoice | **20% VAT**. Ext MD-ACS-nnn / MD-AMI-nnn |
+- **Bupa first:** post the Bupa purchase invoice (deferral to 23200) or, if it hasn't arrived,
+  accrue the premium (Step 3). Bupa renews in Sep/Oct, so check the Group Invoice Detail for new
+  per-person prices.
+- **BC:** Copy Document (B7) with **Include Header ON, Recalculate Lines OFF**.
+- **Check:** confirm all of them in a fresh G/L export (amount, VAT, dates, ext. ref).
+- **Known:**
+  - Recalculate Lines ON created £12k VAT on the £60k ACS recharge (Aug).
+  - Sep SI028129 reused ext ref ACS095. No action is needed, because the invoice number is the
+    unique reference.
+
+### Step 3 – General accruals (34100)
+- **Roll forward:** `P0X_ACCRUALS_PREPAYS_<Month>_2026` (sheets Accruals New / Accruals JNL /
+  Close Control). In Accruals New, column AH-type cells hold the month's charge, invoice columns
+  hold invoices received, and the month balance = b/f + charge + invoices.
+- **Invoice review:** list every overhead purchase invoice entered this month and the previous
+  two. Any recurring supplier with no invoice this month gets an accrual at the latest actual.
+  Items found so far: Interactive Development, Healthcode click fees, PTX/Bottomline, Mid
+  Market, registration fees, Porsche storage, Stella cleaning, ASCH telephone, the £500
+  retainer, TMD payroll fee and Bupa. Release accruals that have been invoiced. Static balances
+  get flagged VERIFY.
+- **Request:** R1 G/L export (latest) and R6 Purchase Invoices posted next month but dated this
+  month (late invoices).
+- **HOLD items:** bonuses + NI, Medven/PSP £20k/month, Class 1A. Never in the journal without
+  evidence. (Aug: RGJ000208 £143,663 was posted anyway, so decide each month.)
+- **Output:** BC journal, ACCRUALS batch, `RV Reversing Variable` / `1M`, doc `ACC<Mon><YY>`,
+  balancing line 34100 (format F1).
+
+### Step 4 – Prepayments (23100 manual vs 23200 automatic)
+- **23200 = BC automatic deferrals** (Deferral Code on purchase invoices). Never also put these
+  on the manual schedule.
+- **23100 = manual schedule.** Add new invoices that cover future periods with no deferral, and
+  release expired lines.
+- **Output:** PREPAYMENT batch in the **exact BC format F2** (Line No. … External Document No.).
+  Saeed asked that this format always be used for PLC prepayments.
+
+### Step 5 – Accrued fixed-deposit interest (24100 / 80100)
+- Roll the `PLC_Accrued_Interest_<Month>_2026` schedule forward one column. Post the cumulative
+  accrual RV/1M, doc `INT<Mon><YY>`.
+- Stop accruing at maturity. The £1m and £2m 6M deposits mature **24/10/2026**, so get renewal
+  terms. Make sure interest actually received isn't double counted.
+
+### Step 6 – ROU printers (64300/14020 dep, 80250/35300 interest)
+- Take the month's column from the lease schedule, doc `LEASE<Mon><YY>`, V/1M (F1).
+- **Open issue:** the Apogee quarterly charge is also expensed on 63100. Check for double count.
+
+### Step 7 – Fixed assets (13030 cost / 13040 acc dep / 64200 dep)
+- **Request:** R10 PLC fixed asset register (not in Drive yet), new capital invoices, and the
+  capitalisation threshold.
+- **Output:** depreciation journal F1, doc `DEP<Mon><YY>`. Reconcile the register to 13030/13040.
+
+### Step 8 – Payroll (RGJ payroll batch)
+- **Request:** R11 payroll report / `Alliance Payroll Journal Template - <MON><YY>`.
+- **Mapping:** 61100 directors, 61200 staff, 61400 er NI, 61500 er pension, 33200 net wages,
+  33400 PAYE/NI/student loan, 33700 pension, 25300 loans, 33250 unpaid/sick. Doc
+  `PAY<MON><YY>`, F1.
+
+### Step 9 – Non-recoverable VAT (67100 / 32500)
+- **Monthly:** the approved forecast figure (ask for it). Never reuse £4,397.22.
+- **Quarter end** (Jun, Sep, Dec, Mar): partial-exemption true-up from R12, then the VAT return
+  workflow.
+
+### Step 10 – Invoice accrual (accrued income 24100 / accrued cost 34300)
+Purpose: pull fund income (51xxx) and cost (52xxx) that belong to the month but were posted
+after it. Run it **after** the Gus posting runs (Aug was exported 14/09).
+- **Request:**
+  - R4 G/L Entries, saved view "Invoice Accrual (Month-end)": Posting Date `<1st next month>..`,
+    VAT Date `..<month end>`. In this BC setup VAT Date stands in for Document Date.
+  - R3 Gus cut-off review export.
+- **Build:**
+  - Replace the raw G/L tab and rebuild the unique dimension combinations (G/L account +
+    5 dimensions).
+  - Check = 0.
+  - Check that every cost line has a sale.
+  - Gus statuses: ReadyToBePosted = accrue candidate; WaitingApproval = HOLD unless the service
+    is confirmed; accrue both sides, never cost only.
+- **Output:** the ACCINC batch RV/1M, doc `INVACC<MON><YY>`, with **all five dimensions**
+  (Department, Costcentre, Type, Treatment group, Treatment code).
+- **Posting method:** paste **directly into the BC journal grid** (B9) using format F3. Edit in
+  Excel only exposes two dimensions unless the Designer fields `ShortcutDimCode3-5` are added.
+
+### Step 11 – Fund receipts and Fund Control (37050)
+- **Request:** R13 fund bank statements (AWG / Mitie / Rolls-Royce on Barclays) and the open
+  fund debtors.
+- **Output:** Cash Receipt Journal, batch **DUMMY** (the batch name goes in the header, not in
+  the lines). Paste starting at **Posting Date** (format F4). Apply each receipt to its fund
+  sales invoice.
+- **Then:** G/L account 37050 → Review Entries → Hide Reviewed Entries. Mark the pairs that
+  net to zero as reviewed. The remaining Fund Control balance must equal and oppose open fund
+  debtors.
+
+### Step 12 – Balance-sheet reconciliations
+- **Request:** R5 Customer Trial Balance + Aged AR; R7 Vendor Trial Balance + Aged AP; R8 Bank
+  Account Ledger Entries + statements; R14 Detail Trial Balance; R15 the unposted-journals
+  check.
+- **Banks:** Handelsbanken current 21100, Handelsbanken EUR 21125, Lloyds 21150, Barclays MTA
+  21300, Deposit 21400. Saeed has Barclays access; Handelsbanken and Lloyds come from Jay
+  (draft the Teams message).
+- **Intercompany:** equal and opposite by counterparty. Name every difference, no plugs. July
+  open difference: ~£18,335.30.
+
+### Step 13 – Management accounts
+- **Request:** R16 Financial Reports MGMT ACS (PLC/ASCH/PMI), OVERHEADS, M-FUND P&L, and the
+  "In network postings" analysis.
+- **Build:** roll the prior final workbook. Paste raw exports to the source tabs only, skipping
+  the extra G/L Budget Filter row. Write CEO/CFO commentary.
+- **PDF:** check every page for overflow and cut-off headings or commentary (Aug: pages 3,
+  14–17 needed fixing).
+
+### Step 14 – Archive and lock
+- **Drive:** save the final schedules and journals (correct versions only) plus the Close Index
+  in the month folder.
+- **Lock:** after approval, set General Ledger Setup → Allow Posting From = 1st of the next
+  month (B11). Check User Setup overrides.
+
+Then repeat the relevant steps for **ASCH** and **PMI** (PMI reconciliation / BDX / STRIPE
+batch, PMI payroll → AMI staff recharge).
+
+---
+
+## 3. Report request cookbook (copy these instructions to Saeed)
+
+General BC tips to include when relevant:
+- **Search:** press `Alt+Q` and type the page or report name.
+- **Company:** check top-left that the company is **Alliance Surgical PLC** before every export.
+- **Filters:** click the funnel icon (Filter pane) → `+ Filter` → choose the field → type the
+  value. Ranges: `01/09/2026..30/09/2026`; up to: `..30/09/2026`; from: `01/10/2026..`
+- **Show a column:** ⚙ (Settings) → Personalise → `+ Field` → drag in → Done.
+- **List pages:** export via `Share` (or `⋯`) → **Open in Excel**.
+- **Reports:** on the request page choose **Send to… → Microsoft Excel Document**.
+
+| # | What | BC page / report | Filters & settings | File name |
+|---|---|---|---|---|
+| R1 | G/L entries for the month | `General Ledger Entries` | Posting Date `01/MM/YYYY..` (to latest). Columns: Posting Date, VAT Date, Document Type, Document No., G/L Account No., Description, Amount, Debit, Credit, Bal. Account, External Document No., User ID, Department Code, Costcentre Code, Type Code, Treatment group Code, Treatment code Code. Open in Excel | `PLC_<Mon>_GL.xlsx` |
+| R2 | Unposted Gus invoices | `Sales Invoices` and `Purchase Invoices` (unposted lists) | No filter, or Posting Date `..<month end>`. Show Posting Date, VAT Date, External Document No., Amount. Open in Excel. Also export `Customer Ledger Entries` and `Vendor Ledger Entries` for the month for matching | `PLC_<Mon>_Unposted_SI.xlsx` / `_PI.xlsx` |
+| R3 | Gus cut-off status | Gus (not BC): unposted / status report | Statuses ReadyToBePosted, WaitingApproval, AwaitingBankDetails with invoice, payment and recharge totals and service dates | `Gus_<Mon>_status.xlsx` |
+| R4 | Invoice accrual source | `General Ledger Entries` → saved view **Invoice Accrual (Month-end)** | Posting Date `01/<next month>..`; VAT Date `..<month end>`. Include G/L Account Name, VAT Amount and all 5 dimension columns. Export after the Gus posting runs | `PLC_<Mon>_InvoiceAccrual_GL.xlsx` |
+| R5 | Debtors | `Customer Trial Balance`; `Aged Accounts Receivable` | CTB: Date Filter `..<month end>`, LCY. Aged AR: Aged as of `<month end>`, Aging by Posting Date, Period Length 1M, Print Details Yes, LCY Yes. Send to Excel | `PLC_<Mon>_Customer_TB.xlsx`, `_Aged_AR.xlsx` |
+| R6 | Late purchase invoices | `Vendor Ledger Entries` | Posting Date `01/<next month>..`, Document Type Invoice. Show Document Date / VAT Date, External Document No., Description, Amount. Open in Excel | `PLC_<Mon>_Late_PI.xlsx` |
+| R7 | Creditors | `Vendor Trial Balance`; `Aged Accounts Payable` | Same settings as R5 | `PLC_<Mon>_Vendor_TB.xlsx`, `_Aged_AP.xlsx` |
+| R8 | Banks | `Bank Account Ledger Entries` + bank statements | Posting Date `..<month end>`, show Bank Account No. Statements to month end for every PLC account (Barclays: Saeed; Handelsbanken/Lloyds: ask Jay) | `PLC_<Mon>_Bank_Ledger.xlsx` |
+| R9 | Deferrals | `Purchasing Deferral Summary` (report) | Date to `<month end>`. Send to Excel | `PLC_<Mon>_Deferral_Summary.xlsx` |
+| R10 | Fixed assets | PLC fixed asset register (Excel) + capital invoices | Last month's rolled register | — |
+| R11 | Payroll | Payroll report / journal template from provider | Month | `Alliance Payroll Journal Template - <MON><YY>.xlsx` |
+| R12 | VAT (quarter end) | `VAT Returns` → Get Return Periods; `VAT Statement` Preview; `VAT Entries` | VAT Date in quarter; Open VAT entries; Before and Within Period | — |
+| R13 | Fund receipts | Barclays fund accounts (AWG, Mitie, Rolls-Royce) statements | Month | — |
+| R14 | Trial balance | `Detail Trial Balance` or `Trial Balance` | Date Filter `<month start>..<month end>` | `PLC_<Mon>_TB.xlsx` |
+| R15 | Unposted journals check | `General Journals`, `Recurring General Journals`, `Payment Journals`, `Cash Receipt Journals` | Look for any line dated ≤ month end. Screenshot; don't delete or post | — |
+| R16 | Management accounts | `Financial Reports` → MGMT ACS / OVERHEADS / M-FUND P&L | Date Filter `<month start>..<month end>`; G/L Budget Filter as prior final month; Refresh; export unchanged | — |
+
+---
+
+## 4. BC how-to reference (talk-through snippets)
+
+- **B1 Find anything:** `Alt+Q`, type the name, open it.
+- **B2 Switch company:** ⚙ → My Settings → Company (or the company name top-left).
+- **B3 Work Date:** ⚙ → My Settings → Work Date. Set it temporarily for Post Batch; reset it
+  afterwards.
+- **B4 Filters:** Filter pane → `+ Filter`. `..` means up to, `x..` means from. Use `|` for OR
+  (`21100|21300`).
+- **B5 Post Batch (unposted invoices):**
+  1. In `Sales Invoices` (then `Purchase Invoices`), filter to one Posting Date and select those
+     invoices.
+  2. Choose Posting → **Post Batch**. Leave Replace Posting Date / Replace Document Date /
+     Replace VAT Date OFF.
+  3. Set the Work Date to that posting date first, because BC refuses if they differ.
+  4. Afterwards check the **Error Message Register** for failures.
+- **B6 Preview before posting:** on a journal or document use **Preview Posting**. Check
+  accounts, VAT, dimensions and balance = 0.
+- **B7 Copy a recharge invoice:** `Sales Invoices` → New → enter Customer → Prepare → **Copy
+  Document**:
+  1. Document Type = Posted Invoice; choose the last clean invoice.
+  2. Include Header **ON**, Recalculate Lines **OFF**.
+  3. Update Posting/Document/VAT/Due dates, descriptions (month) and the External Document No.
+  4. Preview Posting → Post.
+  5. Print/Send → **Send by Email**.
+- **B8 Deferral on a purchase invoice:** if the Deferral Code column is hidden, Personalise the
+  lines → `+ Field` Deferral Code. Pick the code → Deferral Schedule → start = 1st of the period
+  → Recalculate. Check the total = amount to defer.
+- **B9 Paste a journal into BC** (preferred for large or multi-dimension journals):
+  1. `Recurring General Journals` → choose the Batch (ACCRUALS, PREPAYMENT, ACCINC, payroll…).
+  2. Make sure the visible column order matches the spreadsheet: Personalise if needed, and
+     start at **Recurring Method**.
+  3. Clear old template lines: click in the grid → `Ctrl+A` → `Ctrl+Delete`. This deletes the
+     lines, not the batch.
+  4. Copy the data range from the spreadsheet (no headers).
+  5. Click the first blank **Recurring Method** cell → `Ctrl+V`. BC assigns line numbers itself.
+  6. Check balance = 0, spot-check dimensions, Preview Posting, Post.
+- **B10 Edit in Excel → Publish** (for formats with Line No.):
+  1. In the journal: Share → **Edit in Excel**.
+  2. Paste the rows, keeping amount cells **numeric**. `#####` or text amounts give "Cannot
+     convert a value to target type Edm.Decimal".
+  3. Click Publish. If some rows fail, republish **only** the failed rows.
+  4. Duplicate Document No. errors: change the Document No.
+  5. Extra dimension fields can be added via the Excel add-in **Design** → edit the table → add
+     `ShortcutDimCode3/4/5` in blank columns at the end.
+- **B11 Lock the month:** `General Ledger Setup` → Allow Posting From = 1st of the next month.
+  `User Setup` can override per user, so check it.
+- **B12 Recurring methods:**
+  - `RV Reversing Variable` = posts and auto-reverses the next day; the amount clears after
+    posting. Use it for accruals, prepayments, interest and invoice accrual.
+  - `V Variable` = posts without reversal; use it for payroll, depreciation, ROU, non-rec VAT.
+  - After posting, the batch's dates roll forward by the frequency (1M). Always overwrite dates,
+    Document No. and month descriptions, because BC can roll a 30-day month to the 30th instead
+    of the 31st.
+- **B13 Fund Control review:** `Chart of Accounts` → 37050 → **Review Entries** → Hide Reviewed
+  Entries → select pairs netting to 0 → Set Selected as Reviewed.
+
+---
+
+## 5. Journal formats that work in BC (deliver exactly these)
+
+**F1 – Recurring General Journal paste** (accruals, payroll, depreciation, ROU, interest,
+non-rec VAT). Columns A–W:
+`Recurring Method | Recurring Frequency | Posting Date | VAT Date | Document Type | Document No. |
+Account Type | Account No. | Description | Gen. Posting Type | Gen. Bus. Posting Group |
+Gen. Prod. Posting Group | Amount | Amount (LCY) | Debit Amount | Credit Amount |
+Allocated Amt. (LCY) | Expiration Date | Department Code | Costcentre Code | Type Code |
+Treatment group Code | Treatment code Code`
+Paste from Recurring Method. Include a Control tab with the journal balance (0), the posted
+register reference and the batch name.
+
+**F2 – PLC prepayment EXACT BC format** (Edit in Excel layout, 47 columns A–AU):
+`Line No. | Journal Batch Name (PREPAYMENT) | Journal Template Name (RECURRING) | Recurring
+Method | Recurring Frequency | Posting Date | VAT Date | Document Date | Document Type |
+Document No. | Account Type | Account No. | Depreciation Book Code | FA Posting Type |
+Description | Business Unit Code | Salespers./Purch. Code | Campaign No. | Currency Code |
+Gen. Posting Type | Gen. Bus. Posting Group | Gen. Prod. Posting Group | VAT Bus. Posting Group |
+VAT Prod. Posting Group | Amount | Amount (LCY) | Debit Amount | Credit Amount | VAT Amount |
+VAT Difference | Payment Terms Code | Applies-to Doc. Type | Applies-to Doc. No. | Applies-to ID |
+On Hold | Bank Payment Type | Reason Code | Allocated Amt. (LCY) | Bill-to/Pay-to No. |
+Ship-to/Order Address Code | Expiration Date | Comment | Job Queue Status |
+Shortcut Dimension 1 Code | Shortcut Dimension 2 Code | Reverse Date Calculation |
+External Document No.`
+Line numbers go in steps of 10000. The last line is 23100 Total prepayments.
+
+**F3 – Invoice accrual** (ACCINC):
+- Use F1 columns with all five dimensions populated, pasted directly into BC (B9). One
+  24100/34300 pair plus the dimensional lines, built from the "Remove duplicates" combinations.
+- If publishing via Excel instead, use the F2 layout plus `ShortcutDimCode3/4/5` columns.
+
+**F4 – Cash receipt (fund receipts), batch DUMMY / template CASHRCPT:**
+- Starts `Line No. | Journal Batch Name | Journal Template Name | Posting Date | VAT Date |
+  Document Date | Document Type | Document No. | … | Account Type (Customer) | Account No. |
+  Description | … | Amount (negative) | … | Bal. Account Type (G/L Account) | Bal. Account No.
+  (37050) | … | Applies-to Doc. Type (Invoice) | Applies-to Doc. No. | … | Shortcut Dimension 1
+  Code | Shortcut Dimension 2 Code`.
+- When pasting into the BC grid, start at **Posting Date**, not Line No. or the batch.
+
+**End of each close:** one workbook with every journal in its own tab, same format every month.
+
+---
+
+## 6. Lessons and pitfalls (don't repeat)
+
+- **Recharges:** Copy Document with Recalculate Lines ON added £12k VAT to the ACS £60k
+  recharge.
+- **Paste alignment:** a column-shifted paste in June mis-coded 13 expense lines and the
+  balancing account. Always check the BC column order matches.
+- **Date roll:** recurring batches can roll to the 30th; descriptions and doc numbers don't
+  update themselves.
+- **HOLD items posted:** the August HOLD items were posted (RGJ000208 £143,663) despite the
+  DO NOT POST control. Raise the decision explicitly each month.
+- **Hood Street:** the Mike Davies recharge is 50/50 to ACS and AMI with VAT. The old £3,720
+  monthly release (PI014931) is still running and is flagged VERIFY.
+- **Duplicate reference:** the July ACS Hood Street invoice SI023221 was not corrected like
+  the AMI one. ACS may have been overcharged £1,655.33 net.
+- **Rates:** 2026/27 bills are on BC auto-deferral (PI025855–61), so no rates accrual is
+  needed. The 11th floor is £3,800.25/month vs the £4,200 AMI recharge (VERIFY).
+- **Printer lease:** the ROU schedule repays £990/quarter to 35300, but BC expenses the Apogee
+  invoice to 63100. Possible double count.
+- **Invoice accrual:** a big negative P&L impact can be correct: costs posted late against
+  sales already recognised. Check the sale pairing before assuming an error.
+- **Excel publish failures:** amounts stored as text or `#####` fail. Republish only the failed
+  rows.
+- **Static accruals** (shredding, Pitney Bowes, corporate lead gen) need evidence or release.
+- **Uploads:** the Drive connector uploads small files reliably. For large workbooks (>25KB)
+  ask Saeed to drag them into the folder.
+
+---
+
+## 7. Month status log
+
+Update this at the end of each session.
+
+### September 2026 (P06) – in progress (as of 02/10/2026)
+- [x] Step 2 recharges: SI028129 ACS £60,753.78, SI028130 AMI £4,726.10, SI028131 TMD £221.67
+  posted 30/09. **Hood Street recharge NOT yet raised** (ACS £8,597.67 / AMI £8,597.68 + 20%
+  VAT).
+- [ ] Step 3 accruals:
+  - Draft £53,647.82, including the Bupa accrual £2,548.06.
+  - To add: Healthcode £1,097.28, Stella £351.25, £500 retainer (VERIFY), ASCH telephone
+    £2,915.27 (VERIFY).
+  - Release the Direct IP £369.18 line (PTX invoiced).
+  - Decide the HOLD items (bonuses/NI/Medven £168,234).
+- [ ] Step 4 prepayments: draft £6,384.25. Add Grenke £96; franking £194.90 VERIFY.
+- [ ] Step 5 interest INTSEP26 £44,694.24 cumulative and Step 6 ROU LEASESEP26: drafted.
+- [ ] Steps 7–14 outstanding: FA register needed; payroll report needed; VAT Q2 true-up; invoice
+  accrual after the Gus runs.
+- **Drive:** `PLC > 2026-2027 > 06 September 26`. Drafts uploaded except
+  `P06_ACCRUALS_PREPAYS…` and `Right_of_Use_Assets…`, which Saeed is adding manually.
+
+---
+
+## Microsoft Learn references
+- [Working with general journals (recurring journals, reversing methods)](https://learn.microsoft.com/en-us/dynamics365/business-central/ui-work-general-journals)
+- [Post multiple documents at the same time (Post Batch)](https://learn.microsoft.com/en-us/dynamics365/business-central/ui-batch-posting)
+- [Specify posting periods (Allow Posting From/To, User Setup)](https://learn.microsoft.com/en-us/dynamics365/business-central/finance-how-specify-posting-periods)
+- [Viewing and editing in Excel from Business Central](https://learn.microsoft.com/en-us/dynamics365/business-central/across-work-with-excel)
+- [Undo a posting using a reversing entry](https://learn.microsoft.com/en-us/dynamics365/business-central/finance-how-reverse-journal-posting)
+- [Close accounting periods](https://learn.microsoft.com/en-us/dynamics365/business-central/year-close-account-periods)
