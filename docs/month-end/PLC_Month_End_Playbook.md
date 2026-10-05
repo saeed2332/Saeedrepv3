@@ -166,7 +166,7 @@ Invoices. Revenue or cost stuck there distorts the month and the invoice accrual
 
 ### Step 6 – ROU printers (64300/14020 dep, 80250/35300 interest)
 - Take the month's column from the lease schedule, doc `LEASE<Mon><YY>`, V/1M (F1).
-- **Open issue:** the Apogee quarterly charge is also expensed on 63100. Check for double count.
+- **Apogee ImagePLAN printers:** £989.76/qtr rising 5% a year (£1,039.24 from 2026). The "Agreed Minimum Quarterly Charge" line on Apogee invoices is the lease rental. Post it Dr 35300 (no deferral, never 63100). Support and print charges go to 63100.
 
 ### Step 7 – Fixed assets (13030 cost / 13040 acc dep / 64200 dep)
 - **Request:** R10 PLC fixed asset register (not in Drive yet), new capital invoices, and the
@@ -526,7 +526,14 @@ Update this at the end of each session.
      Journal drafted (PENSRECLAUG26/SEP26). Confirmed in the GL.
   1a. [ ] Pension reclass NOT yet posted (not in the 05/10 GL export).
   1b. [x] 05/10 17:21 GL: all 130 late-Sep Gus sales (£48,413.13) now have their purchase invoice posted in Sep (£43,178.47, 10.8% margin). Previous note: 132 Gus sales invoices posted 29–30/09 (£48.4k on 51xxx); only 17 lines matched a posted purchase. Check the unposted Purchase Invoices list and post the matching PIs (Sep dates).
-  1c. [ ] PI028104 £2,250 'Termination 10th Floor Lease 54 Hagley 29.6.26–30.9.26' coded 65650 legal – VERIFY account (rent/property?), period (Jul–Sep) and entity (10th floor = ASCH lease?).
+  1c. [x] PI028104 £2,250 + VAT: a Shakespeare Martineau legal fee (inv 100375471, 30/09/26) for terminating the 10th floor lease, billed to PLC. 65650 Legal is correct; no correction.
+      Knock-on effects to resolve:
+      - Who was the tenant? The ROU schedule shows the 10th Floor Rear/Front as ASCH leases (to Dec 2026). If ASCH, decide whether to recharge the fee.
+      - ASCH must derecognise the 10th-floor ROU asset and liability at the termination date.
+      - The PLC 2026/27 10th-floor rates deferrals (PI024130 / PI024316) keep releasing to Mar 27, so a council rates adjustment is needed.
+      - The new ASCH suites (Suite 310 £12,240; deposits for 304/312) may need a new ROU calculation.
+  1d. [x] July ACS Hood Street overcharge SI023221: Saeed's decision 05/10 is to leave it; ACS can request a credit note. No action.
+  1e. [ ] PLC printer lease double count CONFIRMED. The Apogee ImagePLAN agreement (signed 23/05/25, 12 quarters, £989.76/qtr + VAT, 5% annual increase allowed) matches the ROU schedule. The "Agreed Minimum Quarterly Charge" £1,039.24 (= £989.76 × 1.05) is the lease rental, but BC defers it to 63100 expense (~£346.41/month) while the ROU also charges depreciation and interest, and 35300 is never reduced. Fix: reclass every minimum-charge posting since lease start to Dr 35300 / Cr 63100 (needs the 63100 + 35300 GL from 01/11/2025). Update the ROU schedule repayments to £1,039.24 from the increase date. Future invoices: code the minimum-charge line to 35300 with no deferral. Device Network Support (£750/qtr) stays in 63100.
   2. [x] PLC Sep payroll journal: CHECKED 05/10. The template had the date 01/08 (would have posted PAYROLLAUG26 at 31/08); corrected to 01/09. Balanced £132,804.29; net £79,163.14 agrees to the wages paid 30/09. PMI £3,478.45 → AMI recharge £3,528.45. POSTED RGJ000210 30/09, verified 05/10 (13 lines, all correct). Needs the Sep payroll report. Wages
      were paid 30/09 (£79,163.14, GJ000533).
   3. [ ] PLC recurring journals: accruals (incl. bonus/Medven decision), interest, non-rec VAT,
