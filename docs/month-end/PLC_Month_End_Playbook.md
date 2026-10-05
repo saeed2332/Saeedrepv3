@@ -210,7 +210,21 @@ after it. Run it **after** the Gus posting runs (Aug was exported 14/09).
   - Overhead review: variance = Budget − Actual and Forecast − Actual (month and YTD), always as
     formulas, never hardcoded.
   - Balance sheets (PMI, PLC, ASCH): P&L Reserve B/F is the true brought-forward figure, and
-    Current Year Profit is cumulative Apr–month and agrees to the FY P&L.
+    Current Year Profit is cumulative Apr–month and agrees to the FY P&L. In Aug the PLC
+    balance sheet showed a £111.4k current-year loss against an Apr–Aug P&L loss of ~£49.2k.
+- **Briefing for Neil (CFO) – prepare each month:**
+  - **Headline vs underlying:** strip out one-offs before calling YTD "ahead of budget". The
+    £75k ACS dividend sits in June Other Income, and deposit interest is ~£22k above budget YTD.
+  - **Revenue variances:** split volume from margin. Did cost of sales fall with the activity?
+  - **Fund margins (AWG, Mitie, Rolls-Royce):** drill into any fund below ~5% GP. In Aug,
+    Rolls-Royce hospital work was ~£203.7k revenue against ~£203.2k cost.
+  - **Consultancy and professional fees** vs budget (PLC consultancy £95.5k vs £36.4k YTD at Aug).
+  - **Cash bridge for each entity:** profit, creditors, debtors, non-cash. For ASCH, cash falls
+    as deferred income is released; for PMI, the client-fund cash isn't free cash.
+  - **Known budget run-rate gaps** (ASCH admin fees £72.9k actual vs £77.9k budget each month)
+    and **old one-off lines** (June Members Fees −£18.02k).
+  - **PMI:** the monthly margin is distorted by run-off accrual corrections, so discuss YTD and
+    net liabilities instead (−£421.2k net assets, mainly the £498.2k intercompany creditor).
 
 ### Step 14 – Archive and lock
 - **Drive:** save the final schedules and journals (correct versions only) plus the Close Index
@@ -440,6 +454,24 @@ Update this at the end of each session.
   9. [ ] PMI Sep journals (BDX/commission, Stripe, accruals, payroll, cyber prepayment).
   10. [ ] Management-accounts workbook formula fixes (Step 13 QC list), plus confirm whether
      the £61.5k/£1.5k recharge change is live.
+- **Items from ChatGPT's first (August) review, missing from its second list:**
+  11. [ ] ASCH Tax & Social Security control: £98.0k liability in Jun, £11.9k debit in Jul,
+      £18.7k debit in Aug. Reconcile to the VAT, PAYE and NI controls; no balancing journal.
+  12. [ ] ASCH static balances unchanged since April: £600k intercompany debtors, £300.2k Other
+      Debtors, £320k Other Creditors. Need supporting schedules.
+  13. [ ] ASCH AWG receivable ~£421.9k (£461,088 invoice less £39,202.80 credit), ~90% of
+      ASCH trade debtors. Collection status for commentary.
+  14. [ ] ASCH NH expense batch: £2.88k Pilates and AppleCare/iPhone in Other Staff Costs.
+      Confirm business purpose. Mileage £6.446k was offset by a £5.216k reversal of an
+      unsupported NH expense accrual.
+  15. [ ] PLC trade debtors: the +£103k movement is mainly the AWG negative fund-control
+      balance reducing, not customers owing more. Explain in commentary and the debtor rec.
+  16. [ ] PLC reserves presentation: £111.4k current-year loss vs ~£49.2k Apr–Aug P&L (part of
+      item 10). Fix the reporting rows for all three entities.
+  17. [ ] Intercompany balances: ASCH creditor £814.9k, PMI creditor £498.2k. Reconcile each
+      counterparty, continuing the July ~£18,335.30 difference.
+  18. [ ] Prepare the briefing for Neil (Step 13): RR margin, the £75k one-off, AWG receivable,
+      the ASCH tax debit, PMI net liabilities, the pension fix and the formula error.
 - **Drive:** `PLC > 2026-2027 > 06 September 26`. Drafts uploaded except
   `P06_ACCRUALS_PREPAYS…` and `Right_of_Use_Assets…`, which Saeed is adding manually.
 
