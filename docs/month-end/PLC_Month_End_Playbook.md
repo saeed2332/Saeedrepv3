@@ -406,6 +406,15 @@ Line numbers go in steps of 10000. The last line is 23100 Total prepayments.
   needed. The 11th floor is £3,800.25/month vs the £4,200 AMI recharge (VERIFY).
 - **Printer lease:** the ROU schedule repays £990/quarter to 35300, but BC expenses the Apogee
   invoice to 63100. Possible double count.
+- **Fund margin swings are mostly invoice-accrual cut-off timing.** The accrual only catches
+  invoices in BC when R4 is exported, and anything posted later lands in the next month. Fund
+  margins by service month (VAT date): RR Jul 2.0% / Aug 7.0% (reported 7.3% / 1.6%), AWG
+  Jul 18% / Aug 18% (reported 2.5% / 17.3%), Mitie ~22%. Each month, before commenting on a fund
+  margin, compare the reported margin with the service-month margin. Export R4 as late as
+  possible, after the Gus backlog is posted.
+- **Fund pricing:** RR hospital work is billed at about cost ÷ 0.95, so a structurally low
+  margin (~5–7%) is expected. Physio uses the same mark-up, e.g. PI027016 £45.00 → SI027121
+  £47.37.
 - **Invoice accrual:** a big negative P&L impact can be correct: costs posted late against
   sales already recognised. Check the sale pairing before assuming an error.
 - **Excel publish failures:** amounts stored as text or `#####` fail. Republish only the failed
@@ -470,6 +479,22 @@ Update this at the end of each session.
       item 10). Fix the reporting rows for all three entities.
   17. [ ] Intercompany balances: ASCH creditor £814.9k, PMI creditor £498.2k. Reconcile each
       counterparty, continuing the July ~£18,335.30 difference.
+  19. [x] RR 1.6% Aug margin TESTED (05/10). Invoices posted in Aug made 21.8%. The Aug
+      accrual took £97.4k cost vs £46.5k income; 99.5% of costs match a sale. By service month
+      RR made 7.0% in Aug and 2.0% in Jul, so £20–30k of July-dated cost landed in Aug after
+      the July accrual export. A timing issue, not an error to correct. Jul+Aug combined ~4.5%.
+  20. [ ] £75k ACS dividend (June Other Income) – VERIFY. Needs the June GL for the
+      other-income account, the bank receipt and a dividend voucher or board minute from ACS.
+      Make sure it isn't an intercompany settlement booked to income.
+  21. [ ] ASCH cash vs deferred income – VERIFY. The release is normal, but check Aug: deferred
+      income fell £98.7k = revenue. Confirm no new billing should have been added and that the
+      schedule agrees to the G/L. Needs the ASCH GL plus the RR/AWG deferred income schedules.
+  22. [ ] PMI client funds £136.9k vs client-fund creditors £85.5k – a £51.4k gap to
+      reconcile. Client cash should equal client creditors plus amounts due to PMI. Needs the
+      PMI Balance Reconciliation, plus the 35300/24500/35500 G/L.
+  23. [ ] ASCH admin fees £72.9k/month vs £77.9k budget – VERIFY. Check whether a contract,
+      price uplift or new client in the budget hasn't been invoiced or released. Needs the
+      budget build for admin fees plus the admin-fee billing/deferral schedule by client.
   18. [ ] Prepare the briefing for Neil (Step 13): RR margin, the £75k one-off, AWG receivable,
       the ASCH tax debit, PMI net liabilities, the pension fix and the formula error.
 - **Drive:** `PLC > 2026-2027 > 06 September 26`. Drafts uploaded except
