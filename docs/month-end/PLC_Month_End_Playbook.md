@@ -83,7 +83,7 @@ Gus syncs invoices into BC through the API, but some land as **unposted** Sales 
 Invoices. Revenue or cost stuck there distorts the month and the invoice accrual.
 - **Request:** R2 (unposted Sales Invoices and Purchase Invoices lists), plus R3 (Gus unposted
   invoice status export) if available.
-- **Check:** each purchase invoice must have its matching sales invoice. The company does not
+- **Check:** each purchase invoice must have its matching sales invoice. **Pair them on External Document No.** (sale and purchase carry the same reference, sometimes with a trailing '.'), not on dates, because the VAT dates can differ. The company does not
   take on cost without a sale. Look for duplicates and VAT-date errors.
 - **Matching workbook (SOP General 1.04):** put the four exports on four tabs and add these
   VLOOKUP columns:
@@ -525,7 +525,7 @@ Update this at the end of each session.
   1. [ ] PLC pension DD reclass Aug £4,403.58 (GJ000501) and Sep £4,416.61 (GJ000520) to 33700.
      Journal drafted (PENSRECLAUG26/SEP26). Confirmed in the GL.
   1a. [ ] Pension reclass NOT yet posted (not in the 05/10 GL export).
-  1b. [ ] 132 Gus sales invoices posted 29–30/09 (£48.4k on 51xxx); only 17 lines match a posted purchase. Check the unposted Purchase Invoices list and post the matching PIs (Sep dates).
+  1b. [x] 05/10 17:21 GL: all 130 late-Sep Gus sales (£48,413.13) now have their purchase invoice posted in Sep (£43,178.47, 10.8% margin). Previous note: 132 Gus sales invoices posted 29–30/09 (£48.4k on 51xxx); only 17 lines matched a posted purchase. Check the unposted Purchase Invoices list and post the matching PIs (Sep dates).
   1c. [ ] PI028104 £2,250 'Termination 10th Floor Lease 54 Hagley 29.6.26–30.9.26' coded 65650 legal – VERIFY account (rent/property?), period (Jul–Sep) and entity (10th floor = ASCH lease?).
   2. [x] PLC Sep payroll journal: CHECKED 05/10. The template had the date 01/08 (would have posted PAYROLLAUG26 at 31/08); corrected to 01/09. Balanced £132,804.29; net £79,163.14 agrees to the wages paid 30/09. PMI £3,478.45 → AMI recharge £3,528.45. POSTED RGJ000210 30/09, verified 05/10 (13 lines, all correct). Needs the Sep payroll report. Wages
      were paid 30/09 (£79,163.14, GJ000533).
