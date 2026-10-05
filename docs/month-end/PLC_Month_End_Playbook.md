@@ -60,7 +60,15 @@ Standard opening for a new month:
 WD = working day (WD0 = first working day after month end). Each step lists what I request,
 what I produce, and the checks.
 
-### Step 0 – Set up (WD-1 / WD0)
+### Step 0 – Set up and housekeeping (throughout / WD-1 / WD0)
+- **Housekeeping (SOP Overview):**
+  - Post trade invoices from the finance inbox.
+  - Check the Gus posting runs and the bank postings.
+  - Back up the bank statements: export all transactions across all accounts and entities to
+    `Bank > Year > Month` (Handelsbanken: Transactions → Download → all companies, CSV, show
+    balance; Barclays: Export Balances and Transactions → date range → CSV transactions → all
+    accounts).
+  - Review and approve the weekly payment run.
 - **Drive:** create `NN Month YY` under `PLC > 2026-2027` with `Schedules` and `Journals`
   subfolders, matching the August layout. Download last month's archive, which is the template.
 - **Request:** the PLC General Ledger Entries export (R1) for the month so far.
@@ -77,6 +85,20 @@ Invoices. Revenue or cost stuck there distorts the month and the invoice accrual
   invoice status export) if available.
 - **Check:** each purchase invoice must have its matching sales invoice. The company does not
   take on cost without a sale. Look for duplicates and VAT-date errors.
+- **Matching workbook (SOP General 1.04):** put the four exports on four tabs and add these
+  VLOOKUP columns:
+  - On the sales tab: Duplicate (ext. doc. further down the list), On PI, On Customer Ledger
+    Entries.
+  - On the purchase tab: Duplicate, On SI, On Vendor Ledger Entries.
+  - Mark each problem line "Y" when cleared; post only those.
+- **Common causes:**
+  - Duplicate invoice no.: check Gus treatment dates, patient and values. If the invoices are
+    genuinely separate, add "." to the reference. IPRS invoices are split, so duplicates there
+    are usually fine.
+  - Sale without a purchase (or the reverse): ask Michelle to repost in Gus, then credit the
+    orphan.
+  - VAT date outside the allowed range: check the date. If it's correct, temporarily open the
+    VAT period, then close it again.
 - **Talk Saeed through:** **Post Batch** (B5), one posting date at a time with the Work Date set
   to that date. Leave Replace Posting/Document/VAT Date **off**. Never re-date invoices to today.
 
@@ -100,6 +122,12 @@ Invoices. Revenue or cost stuck there distorts the month and the invoice accrual
   - Sep SI028129 reused ext ref ACS095. No action is needed, because the invoice number is the
     unique reference.
 
+### Step 2b – Credit card postings (WD1)
+- **Check:** the credit card journals (nh crcd / kf crcd, GJ batches) for the month are posted,
+  coded correctly and complete. Watch the VAT on foreign-currency/software charges and any
+  intercompany items, which feed the intercompany check. Late card postings are a common
+  cause of intercompany differences.
+
 ### Step 3 – General accruals (34100)
 - **Roll forward:** `P0X_ACCRUALS_PREPAYS_<Month>_2026` (sheets Accruals New / Accruals JNL /
   Close Control). In Accruals New, column AH-type cells hold the month's charge, invoice columns
@@ -114,12 +142,17 @@ Invoices. Revenue or cost stuck there distorts the month and the invoice accrual
   month (late invoices).
 - **HOLD items:** bonuses + NI, Medven/PSP £20k/month, Class 1A. Never in the journal without
   evidence. (Aug: RGJ000208 £143,663 was posted anyway, so decide each month.)
+- **Second pass (SOP 1.09):** after the variance analysis vs budget/forecast (Step 13), add
+  any accruals the variances reveal (missing invoices) in a version 2 before the final TB.
 - **Output:** BC journal, ACCRUALS batch, `RV Reversing Variable` / `1M`, doc `ACC<Mon><YY>`,
   balancing line 34100 (format F1).
 
 ### Step 4 – Prepayments (23100 manual vs 23200 automatic)
 - **23200 = BC automatic deferrals** (Deferral Code on purchase invoices). Never also put these
   on the manual schedule.
+- **Completeness check (SOP 1.08):** in `Vendor Ledger Entries`, filter Posting Date = the
+  month (and the Trade posting group). Scan for annual or quarterly invoices with no deferral
+  and add them to the manual schedule.
 - **23100 = manual schedule.** Add new invoices that cover future periods with no deferral, and
   release expired lines.
 - **Output:** PREPAYMENT batch in the **exact BC format F2** (Line No. … External Document No.).
@@ -146,11 +179,30 @@ Invoices. Revenue or cost stuck there distorts the month and the invoice accrual
   previous month's 33700 liability, so reclass it Dr 33700 / Cr 61500 (General Journal) every
   month until the bank posting rule is changed to 33700. Jul GJ000492 was the first fix.
 - **Request:** R11 payroll report / `Alliance Payroll Journal Template - <MON><YY>`.
+- **Payroll provider file (SOP 1.02):** ignore the N/C column (legacy system) and the
+  provider's directors/staff split. Some people related to Neil aren't officially directors.
+  Directors' salaries are fixed and the same as last month unless the payroll payment
+  approval shows a change. Staff = total wages − directors. Click into each Account No. to
+  check the mapping before posting.
+- **PMI:** one employee, no split. After posting, PMI staff costs for the month + the £50 TMD
+  fee = the PMI→AMI recharge.
 - **Mapping:** 61100 directors, 61200 staff, 61400 er NI, 61500 er pension, 33200 net wages,
   33400 PAYE/NI/student loan, 33700 pension, 25300 loans, 33250 unpaid/sick. Doc
   `PAY<MON><YY>`, F1.
 
-### Step 9 – Non-recoverable VAT (67100 / 32500)
+### Step 9 – Non-recoverable VAT (67100 / 32500) and VAT returns
+- **VAT return calendar (SOP VAT Returns):** PLC quarters end Mar/Jun/Sep/Dec and are submitted
+  Apr/Jul/Oct/Jan (VAT no. GB861242246). ASCH quarters end Feb/May/Aug/Nov and are submitted
+  Mar/Jun/Sep/Dec. **PLC Q/E Sep 26 is due in October; confirm ASCH Q/E Aug 26 was submitted in
+  September.**
+- **Return workflow:**
+  1. VAT Return Periods → Get Return Periods.
+  2. VAT Statements → template VAT Return → Preview (Open entries, Before and Within Period,
+     date = quarter end) → Open in Excel.
+  3. VAT Entries, view "Current Return", VAT date to quarter end → Excel.
+  4. Reconcile boxes 1–9 and the input/output VAT G/L (Review Entries).
+  5. Calculate partial exemption (PLC only).
+  6. Submit, then Calculate and Post VAT Settlement.
 - **Monthly:** the approved forecast figure (ask for it). Never reuse £4,397.22.
 - **Quarter end** (Jun, Sep, Dec, Mar): partial-exemption true-up from R12, then the VAT return
   workflow.
@@ -188,6 +240,19 @@ after it. Run it **after** the Gus posting runs (Aug was exported 14/09).
 - **Request:** R5 Customer Trial Balance + Aged AR; R7 Vendor Trial Balance + Aged AP; R8 Bank
   Account Ledger Entries + statements; R14 Detail Trial Balance; R15 the unposted-journals
   check.
+- **BC bank reconciliation (SOP 1.10):**
+  1. Search Bank Reconciliation → New → choose the account; set the statement date and ending
+     balance.
+  2. Bank → Import bank statement (Barclays CSV transactions; Handelsbanken CSV with one
+     amount column, signs negated).
+  3. Match: Match Automatically, then Match Manually (1-to-many is fine, many-to-many isn't);
+     Remove Match fixes mistakes.
+  4. Transfer to General Journal for unposted bank lines, then Post.
+  - Full BC rec works for Handelsbanken current, Barclays MTA, ASCH current, PMI Handelsbanken
+    and PMI Barclays premium. Not possible for HB EUR (currency), the Barclays DD account (too
+    many-to-many) or the Deposit account (no statements).
+  - Also update the "Monthly bank and intercompany check" workbook (balance per bank vs per
+    BC; intercompany per entity).
 - **Banks:** Handelsbanken current 21100, Handelsbanken EUR 21125, Lloyds 21150, Barclays MTA
   21300, Deposit 21400. Saeed has Barclays access; Handelsbanken and Lloyds come from Jay
   (draft the Teams message).
@@ -197,6 +262,16 @@ after it. Run it **after** the Gus posting runs (Aug was exported 14/09).
 ### Step 13 – Management accounts
 - **Request:** R16 Financial Reports MGMT ACS (PLC/ASCH/PMI), OVERHEADS, M-FUND P&L, and the
   "In network postings" analysis.
+- **Build (SOP 2.1–2.5):** roll the prior final workbook, recolour the tabs yellow and set the
+  month in Data input & checks B2. Run the Financial Reports per entity: Refresh → check the
+  checks at the bottom → export using the layout → paste to the blue tab. Re-run all of an
+  entity's reports after any adjustment. Paste only the current month for FUNDP&L. Analysis
+  view = G/L Entries "In network postings" → analysis mode → pivot G/L Name / Department
+  Code / Type Code. Enter the intercompany debtor/creditor balances from the customer/vendor
+  reports. All Data input & checks cells must be OK, and each entity's net profit must equal
+  its in-month TB net profit.
+- **Distribution:** PDF by WD5 to Neil, Ann and Adam with an email summary, forwarded to
+  Michael Davis.
 - **Build:** roll the prior final workbook. Paste raw exports to the source tabs only, skipping
   the extra G/L Budget Filter row. Write CEO/CFO commentary.
 - **PDF:** check every page for overflow and cut-off headings or commentary (Aug: pages 3,
@@ -501,6 +576,33 @@ Update this at the end of each session.
   `P06_ACCRUALS_PREPAYS…` and `Right_of_Use_Assets…`, which Saeed is adding manually.
 
 ---
+
+## 8. SOP coverage map (CC_SOPs__Handovers.xlsx → this playbook)
+
+| SOP task (Overview tab) | SOP timing | Playbook step |
+|---|---|---|
+| General housekeeping (inbox invoices, Gus, bank postings, statement backup) | Throughout | Step 0, Step 1 |
+| Interco recharges | WD0 | Step 2 |
+| Non-recoverable VAT provision | WD0 | Step 9 |
+| Fixed assets (capitalisation + depreciation) | WD1 | Step 7 |
+| ROU depreciation + lease unwind | WD1 | Step 6 |
+| Fund receipts | WD1 | Step 11 |
+| Credit cards | WD1 | Step 2b |
+| Accrued interest | WD1 | Step 5 |
+| Intercompany balances | WD1 | Step 12 |
+| Payroll postings | WD2 | Step 8 |
+| Prepayments & accruals | WD3 | Steps 3–4 |
+| Invoice accrual | WD4 | Step 10 |
+| Management accounts + P&L review | WD4–WD5 | Step 13 |
+| Balance-sheet reconciliations | WD6+ | Step 12 |
+| Weekly payment run | Weekly | Step 0 |
+| PLC / ASCH VAT returns | Quarterly | Step 9 |
+| Kindred (BDX, arrears, PMI rec, broker commissions) | Monthly | PMI section |
+| Audit, corporation tax, budget & forecast, fund budgets, P11Ds, ONS surveys | Annual / ad hoc | Out of the monthly flow; raise when due |
+
+Where the SOP and the later handover disagree, the handover / latest posted BC wins. For
+example, the SOP says directors' salaries are 61600, but the validated mapping is 61100.
+The SOP's Logins tab holds passwords: never copy it into this repo or any output.
 
 ## Microsoft Learn references
 - [Working with general journals (recurring journals, reversing methods)](https://learn.microsoft.com/en-us/dynamics365/business-central/ui-work-general-journals)
