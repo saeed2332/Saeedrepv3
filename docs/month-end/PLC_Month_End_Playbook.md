@@ -506,7 +506,7 @@ Line numbers go in steps of 10000. The last line is 23100 Total prepayments.
 Update this at the end of each session.
 
 ### September 2026 (P06) – in progress (as of 02/10/2026)
-- [x] Step 2 recharges: SI028129 ACS £60,753.78, SI028130 AMI £4,726.10, SI028131 TMD £221.67
+- [x] Step 2 recharges: Hood Street POSTED 30/09 – SI028241 ACS / SI028242 AMI, £8,597.68 + £1,719.54 VAT each (1p over £17,195.35; ext refs reuse -002, no action). SI028129 ACS £60,753.78, SI028130 AMI £4,726.10, SI028131 TMD £221.67
   posted 30/09. **Hood Street recharge NOT yet raised** (ACS £8,597.67 / AMI £8,597.68 + 20%
   VAT).
 - [ ] Step 3 accruals:
@@ -524,7 +524,10 @@ Update this at the end of each session.
   accounts workbook QC:**
   1. [ ] PLC pension DD reclass Aug £4,403.58 (GJ000501) and Sep £4,416.61 (GJ000520) to 33700.
      Journal drafted (PENSRECLAUG26/SEP26). Confirmed in the GL.
-  2. [ ] PLC Sep payroll journal: CHECKED 05/10. The template had the date 01/08 (would have posted PAYROLLAUG26 at 31/08); corrected to 01/09. Balanced £132,804.29; net £79,163.14 agrees to the wages paid 30/09. PMI £3,478.45 → AMI recharge £3,528.45. Awaiting posting. Previous note: not posted (confirmed). Needs the Sep payroll report. Wages
+  1a. [ ] Pension reclass NOT yet posted (not in the 05/10 GL export).
+  1b. [ ] 132 Gus sales invoices posted 29–30/09 (£48.4k on 51xxx); only 17 lines match a posted purchase. Check the unposted Purchase Invoices list and post the matching PIs (Sep dates).
+  1c. [ ] PI028104 £2,250 'Termination 10th Floor Lease 54 Hagley 29.6.26–30.9.26' coded 65650 legal – VERIFY account (rent/property?), period (Jul–Sep) and entity (10th floor = ASCH lease?).
+  2. [x] PLC Sep payroll journal: CHECKED 05/10. The template had the date 01/08 (would have posted PAYROLLAUG26 at 31/08); corrected to 01/09. Balanced £132,804.29; net £79,163.14 agrees to the wages paid 30/09. PMI £3,478.45 → AMI recharge £3,528.45. POSTED RGJ000210 30/09, verified 05/10 (13 lines, all correct). Needs the Sep payroll report. Wages
      were paid 30/09 (£79,163.14, GJ000533).
   3. [ ] PLC recurring journals: accruals (incl. bonus/Medven decision), interest, non-rec VAT,
      depreciation, ROU, invoice accrual. Confirmed: Sep 61300 −£103,663; 80100 −£34,291; no
