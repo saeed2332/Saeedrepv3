@@ -65,6 +65,10 @@ what I produce, and the checks.
   subfolders, matching the August layout. Download last month's archive, which is the template.
 - **Request:** the PLC General Ledger Entries export (R1) for the month so far.
 - **Produce:** a Close Index workbook (Status / Recharges / Issues & Decisions tabs).
+- **Reversal check:** list every RV journal that reversed on the 1st (accruals, bonuses, Medven,
+  interest, invoice accrual, prepayments). Each one must be replaced by a month-end journal or
+  explicitly released. Until then the month's P&L is unusable: staff costs show credits,
+  interest goes negative, and depreciation and non-recoverable VAT show £0.
 
 ### Step 1 – Gus backlog: unposted invoices
 Gus syncs invoices into BC through the API, but some land as **unposted** Sales or Purchase
@@ -88,6 +92,9 @@ Invoices. Revenue or cost stuck there distorts the month and the invoice accrual
   per-person prices.
 - **BC:** Copy Document (B7) with **Include Header ON, Recalculate Lines OFF**.
 - **Check:** confirm all of them in a fresh G/L export (amount, VAT, dates, ext. ref).
+- **Budget check:** compare the recharges with the management-accounts budget. The Sep 26
+  budget assumes PLC→ACS £61.5k plus a £1.5k ASCH charge (group net £60k); confirm whether it
+  went live.
 - **Known:**
   - Recalculate Lines ON created £12k VAT on the £60k ACS recharge (Aug).
   - Sep SI028129 reused ext ref ACS095. No action is needed, because the invoice number is the
@@ -133,7 +140,11 @@ Invoices. Revenue or cost stuck there distorts the month and the invoice accrual
   capitalisation threshold.
 - **Output:** depreciation journal F1, doc `DEP<Mon><YY>`. Reconcile the register to 13030/13040.
 
-### Step 8 – Payroll (RGJ payroll batch)
+### Step 8 – Payroll and pension (RGJ payroll batch) – do this early, ahead of the accruals
+- **People's Partnership pension direct debit:** the bank posts it to **61500 expense**, but the
+  payroll journal already expenses the employer pension and credits 33700. Each DD pays the
+  previous month's 33700 liability, so reclass it Dr 33700 / Cr 61500 (General Journal) every
+  month until the bank posting rule is changed to 33700. Jul GJ000492 was the first fix.
 - **Request:** R11 payroll report / `Alliance Payroll Journal Template - <MON><YY>`.
 - **Mapping:** 61100 directors, 61200 staff, 61400 er NI, 61500 er pension, 33200 net wages,
   33400 PAYE/NI/student loan, 33700 pension, 25300 loans, 33250 unpaid/sick. Doc
@@ -190,6 +201,16 @@ after it. Run it **after** the Gus posting runs (Aug was exported 14/09).
   the extra G/L Budget Filter row. Write CEO/CFO commentary.
 - **PDF:** check every page for overflow and cut-off headings or commentary (Aug: pages 3,
   14–17 needed fixing).
+- **Workbook QC before use (fix once, then check every month):**
+  - Combined P&L Analysis: the CoS budget total must be `E23 = SUM(E18:E22)`, with `C23 = E23`
+    and `F23 = B23 - E23`. In Aug a wrong total showed GP £93.8k favourable when it was £13.7k
+    adverse.
+  - Funds Overview (Rolls-Royce): each month must point at its own source column. Aug repeated
+    July's data (£278.6k vs £264.1k income).
+  - Overhead review: variance = Budget − Actual and Forecast − Actual (month and YTD), always as
+    formulas, never hardcoded.
+  - Balance sheets (PMI, PLC, ASCH): P&L Reserve B/F is the true brought-forward figure, and
+    Current Year Profit is cumulative Apr–month and agrees to the FY P&L.
 
 ### Step 14 – Archive and lock
 - **Drive:** save the final schedules and journals (correct versions only) plus the Close Index
@@ -199,6 +220,24 @@ after it. Run it **after** the Gus posting runs (Aug was exported 14/09).
 
 Then repeat the relevant steps for **ASCH** and **PMI** (PMI reconciliation / BDX / STRIPE
 batch, PMI payroll → AMI staff recharge).
+
+**ASCH recurring checks:**
+- **Deferred income:** RR admin fee and AWG Healthy U. The August journals reverse on the 1st, so
+  post the new month's deferral from the schedules, otherwise revenue is overstated.
+- **Accrual reversals:** match each one to an invoice or re-accrue only what is still
+  outstanding (electricity, vehicle insurance, property insurance, Azure…).
+- **Depreciation and ROU:** fixtures, office equipment, ROU, lease interest and the £6.825k MDM
+  asset.
+- **Bruce Braithwaite:** his monthly invoice (£2,735.33) is coded 65550 Consultancy, so reclass
+  it to 61525 Contractor.
+- **Rent invoices:** check for refundable deposits (e.g. Suite 304/312), which belong on the
+  balance sheet, not in P&L.
+
+**PMI:** September needs the BDX/commission journals, Stripe journal, supplier accruals,
+payroll and the cyber-insurance prepayment. The August broker commission (£58,456.67) and
+admin-fee (£10,100) accruals have reversed. Kindred, Rapid Quote and app-support accruals have
+also reversed and need checking. Correct August items through the current month; don't reopen
+an issued pack.
 
 ---
 
@@ -381,6 +420,26 @@ Update this at the end of each session.
 - [ ] Step 5 interest INTSEP26 £44,694.24 cumulative and Step 6 ROU LEASESEP26: drafted.
 - [ ] Steps 7–14 outstanding: FA register needed; payroll report needed; VAT Q2 true-up; invoice
   accrual after the Gus runs.
+- **External review items (ChatGPT, 05/10) – the agreed order is PLC payroll/pension → PLC
+  recurring journals → ASCH deferrals/accruals → ASCH depreciation/reclasses → PMI → management
+  accounts workbook QC:**
+  1. [ ] PLC pension DD reclass Aug £4,403.58 (GJ000501) and Sep £4,416.61 (GJ000520) to 33700.
+     Journal drafted (PENSRECLAUG26/SEP26). Confirmed in the GL.
+  2. [ ] PLC Sep payroll journal: not posted (confirmed). Needs the Sep payroll report. Wages
+     were paid 30/09 (£79,163.14, GJ000533).
+  3. [ ] PLC recurring journals: accruals (incl. bonus/Medven decision), interest, non-rec VAT,
+     depreciation, ROU, invoice accrual. Confirmed: Sep 61300 −£103,663; 80100 −£34,291; no
+     64200/64300/67100 entries.
+  4. [ ] ASCH RR/AWG deferred income (£83,758 RR and £59,050 AWG reversed 01/09).
+  5. [ ] ASCH accrual reversals: electricity £7.7k, vehicle insurance £4.6k, property insurance
+     ~£3.0k (Azure invoiced).
+  6. [ ] ASCH Bruce Braithwaite PI000314 £2,735.33: Dr 61525 / Cr 65550.
+  7. [ ] ASCH depreciation, ROU, lease interest and MDM asset.
+  8. [ ] ASCH Suite 312 £1,848 and Suite 304 £3,696 deposits: move to balance sheet if
+     refundable. Check the Suite 310 £12,240 invoice.
+  9. [ ] PMI Sep journals (BDX/commission, Stripe, accruals, payroll, cyber prepayment).
+  10. [ ] Management-accounts workbook formula fixes (Step 13 QC list), plus confirm whether
+     the £61.5k/£1.5k recharge change is live.
 - **Drive:** `PLC > 2026-2027 > 06 September 26`. Drafts uploaded except
   `P06_ACCRUALS_PREPAYS…` and `Right_of_Use_Assets…`, which Saeed is adding manually.
 
