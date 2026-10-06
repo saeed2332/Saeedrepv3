@@ -43,7 +43,8 @@ These come directly from Saeed's feedback. Follow them every time.
    posting: document number, accounts, amounts, VAT, dimensions and dates.
 8. **Own mistakes plainly.** If an earlier statement was wrong, say so and give the corrected
    position.
-9. **Keep it concise.** Use tables for amounts and short numbered steps for BC actions. Don't
+9. **Keep it concise and fast.** Short answers, one action at a time, no long explanations unless asked. Every reply ends with a short **Open items** list carrying forward unresolved topics, so nothing is dropped when we move on.
+   (Previous wording: **Keep it concise.**) Use tables for amounts and short numbered steps for BC actions. Don't
    explain close mechanics unless asked.
 10. **When Saeed lacks access** (Handelsbanken, Lloyds), draft a short Teams message to Jay.
 11. **Archive at the end of each entity's close.** Save the final correct schedules and journals
@@ -529,7 +530,7 @@ Update this at the end of each session.
   accounts workbook QC:**
   1. [ ] PLC pension DD reclass Aug £4,403.58 (GJ000501) and Sep £4,416.61 (GJ000520) to 33700.
      Journal drafted (PENSRECLAUG26/SEP26). Confirmed in the GL.
-  1a. [ ] Pension reclass: GJ000539 posted 30/09 for £4,403.58 (the Aug amount) with a 'Sep 26 (GJ000520)' description; the Sep DD was £4,416.61. Confirm whether the Aug-dated line was also posted (need the 33700/61500 GL from 01/08), then post the remainder (£13.03, or £4,416.61 if the Aug line wasn't posted).
+  1a. [ ] Pension reclass: Aug GJ000538 correct (31/08 £4,403.58). Sep GJ000539 short by £13.03, so post Dr 33700 / Cr 61500 £13.03 at 30/09. Detail: GJ000539 posted 30/09 for £4,403.58 (the Aug amount) with a 'Sep 26 (GJ000520)' description; the Sep DD was £4,416.61. Confirm whether the Aug-dated line was also posted (need the 33700/61500 GL from 01/08), then post the remainder (£13.03, or £4,416.61 if the Aug line wasn't posted).
   1b. [x] 05/10 17:21 GL: all 130 late-Sep Gus sales (£48,413.13) now have their purchase invoice posted in Sep (£43,178.47, 10.8% margin). Previous note: 132 Gus sales invoices posted 29–30/09 (£48.4k on 51xxx); only 17 lines matched a posted purchase. Check the unposted Purchase Invoices list and post the matching PIs (Sep dates).
   1c. [x] PI028104 £2,250 + VAT: a Shakespeare Martineau legal fee (inv 100375471, 30/09/26) for terminating the 10th floor lease, billed to PLC. 65650 Legal is correct; no correction.
       Knock-on effects to resolve:
