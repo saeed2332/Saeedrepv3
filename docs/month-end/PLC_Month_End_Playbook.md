@@ -165,6 +165,11 @@ Invoices. Revenue or cost stuck there distorts the month and the invoice accrual
   terms. Make sure interest actually received isn't double counted.
 
 ### Step 6 – ROU printers (64300/14020 dep, 80250/35300 interest)
+- **Lease calendar – check every month:**
+  - PLC Apogee printers: 12 quarters from 23/05/2025; the final depreciation month is May 2028. Set the **Expiration Date** on the LEASE recurring-journal lines to 31/05/2028 so BC stops posting after that.
+  - ASCH 10th floor Rear/Front: terminated (legal fee PI028104, period to 30/09/2026). Derecognise the ROU asset and liability at the termination date in the ASCH close.
+  - ASCH new suites (304/310/312): assess as new leases.
+- **Lease end checklist:** final depreciation month = asset fully depreciated; lease liability 35300 = 0 after the last rental; remove the lines from the batch; tidy any rounding.
 - Take the month's column from the lease schedule, doc `LEASE<Mon><YY>`, V/1M (F1).
 - **Apogee ImagePLAN printers:** £989.76/qtr rising 5% a year (£1,039.24 from 2026). The "Agreed Minimum Quarterly Charge" line on Apogee invoices is the lease rental. Post it Dr 35300 (no deferral, never 63100). Support and print charges go to 63100.
 
@@ -524,7 +529,7 @@ Update this at the end of each session.
   accounts workbook QC:**
   1. [ ] PLC pension DD reclass Aug £4,403.58 (GJ000501) and Sep £4,416.61 (GJ000520) to 33700.
      Journal drafted (PENSRECLAUG26/SEP26). Confirmed in the GL.
-  1a. [ ] Pension reclass NOT yet posted (not in the 05/10 GL export).
+  1a. [ ] Pension reclass: GJ000539 posted 30/09 for £4,403.58 (the Aug amount) with a 'Sep 26 (GJ000520)' description; the Sep DD was £4,416.61. Confirm whether the Aug-dated line was also posted (need the 33700/61500 GL from 01/08), then post the remainder (£13.03, or £4,416.61 if the Aug line wasn't posted).
   1b. [x] 05/10 17:21 GL: all 130 late-Sep Gus sales (£48,413.13) now have their purchase invoice posted in Sep (£43,178.47, 10.8% margin). Previous note: 132 Gus sales invoices posted 29–30/09 (£48.4k on 51xxx); only 17 lines matched a posted purchase. Check the unposted Purchase Invoices list and post the matching PIs (Sep dates).
   1c. [x] PI028104 £2,250 + VAT: a Shakespeare Martineau legal fee (inv 100375471, 30/09/26) for terminating the 10th floor lease, billed to PLC. 65650 Legal is correct; no correction.
       Knock-on effects to resolve:
