@@ -177,6 +177,7 @@ Invoices. Revenue or cost stuck there distorts the month and the invoice accrual
 ### Step 7 – Fixed assets (13030 cost / 13040 acc dep / 64200 dep)
 - **Request:** R10 PLC fixed asset register (not in Drive yet), new capital invoices, and the
   capitalisation threshold.
+- **Low-value IT peripherals** (keyboards, mice, headsets, cables): expense them to IT costs and don't capitalise. Decided Oct 2026 for £426 of keyboards and mice. The formal threshold is still to be confirmed from the FA register or accounting policy.
 - **Output:** depreciation journal F1, doc `DEP<Mon><YY>`. Reconcile the register to 13030/13040.
 
 ### Step 8 – Payroll and pension (RGJ payroll batch) – do this early, ahead of the accruals
