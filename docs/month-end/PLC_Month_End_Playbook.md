@@ -50,6 +50,23 @@ These come directly from Saeed's feedback. Follow them every time.
 11. **Archive at the end of each entity's close.** Save the final correct schedules and journals
     to the Drive month folder. Leave out corrections, undo journals and wrong versions.
 
+12. **Batch mode (from October 2026, Saeed's instruction): all three companies at once.**
+    Saeed has made me the final decision maker. Each month:
+    1. Ask once for the **whole-year G/L Entries export for PLC, ASCH and PMI**
+       (Posting Date 01/04/YYYY..end of next month).
+    2. **Review the ledger before preparing any journal.** Run a month-by-month matrix of every
+       P&L account and add my proposed journals to the current month. Every account should look
+       like prior months. Any difference must be explained, or else accrued, prepaid,
+       capitalised or reclassed. Check: recurring invoices missing this month, invoices posted
+       next month with a VAT date in this month, one-offs posted to rent or expense, BC
+       auto-deferrals spreading past-period costs, rent coded to expense instead of 35300
+       (IFRS16), new fixed-asset additions, and duplicate or wrong-sign bank journals.
+    3. Deliver one journal pack per company (`<CO>_<Month>_<YYYY>_Journals_TO_POST.xlsx`, with
+       a "0 Post in this order" tab, BC-format tabs and a Decisions tab) plus **one request list**
+       for everything still needed (reports, invoices, questions for Neil).
+    4. Rule from August: if an accrual has been posted every month, keep it and review it
+       later. One-offs need evidence.
+
 Standard opening for a new month:
 > "We're closing PLC <Month YY> (P0X). Step 1 is X. To start I need: [report list with BC
 > steps]. While you pull those, I'll roll forward last month's schedules from Drive."
@@ -592,6 +609,31 @@ Update this at the end of each session.
       budget build for admin fees plus the admin-fee billing/deferral schedule by client.
   18. [ ] Prepare the briefing for Neil (Step 13): RR margin, the £75k one-off, AWG receivable,
       the ASCH tax debit, PMI net liabilities, the pension fix and the formula error.
+- **07/10/2026 batch-mode update (all three companies, nothing for September posted yet):**
+  - Reviewed the full-year G/Ls (exported 07/10).
+  - Packs sent to Saeed in chat: `PLC_/ASCH_/PMI_September_2026_Journals_TO_POST.xlsx` and
+    `September_2026_Requests_ALL_COMPANIES.xlsx`. The earlier Drive copies of the ASCH pack and
+    request list are renamed SUPERSEDED; archive the finals after posting.
+  - PLC accruals £224,813.75. Following the posted pattern, these include bonuses + NI
+    £107,934, Medven £60k, Class 1A £300, Healthcode, Stella and the ASCH telephone recharge.
+    Shredding and Direct IP are released.
+  - PLC prepayments £6,480.25; interest £44,694.24; ROU £338.63; printer fix; pension top-up
+    £13.03; depreciation £577.85.
+  - ASCH findings:
+    - PI000309 £17,784 is the Spaces deposit, coded to rent.
+    - PI000308 £25,144 is the Mitie Sep25–Aug26 recon, being auto-deferred to Mar 27. Expense now.
+    - PI000289 10th Front rent is coded to 66150, not 35300.
+    - The £5,500 outreach invoice is missing for September (accrued).
+    - DCA KND £403 not needed (invoice posted).
+    - Laptop PI000313 capitalised.
+    - MTE GB VGP income (£22.5k/m) ended in August: question for Neil.
+    - The ASCH VAT return (Jun–Aug) was due 07/10.
+  - ASCH projected September loss ~£16.8k.
+  - PLC finding: 51300 has £9,100 of debits in September. GJ000542 (Barclays DD £5,460) may
+    duplicate Medven PI028192 – bank statement needed.
+  - PMI: STRIPE from the P06 recon, accruals, broker commission £64,590.76, cyber prepayment
+    £359. Payroll and the AMI recharge wait for September payroll. Howden PI000107 £44,553.22
+    is unpaid (payment reversed). Projected profit ~£4.2k (Aug £4.7k).
 - **Drive:** `PLC > 2026-2027 > 06 September 26`. Drafts uploaded except
   `P06_ACCRUALS_PREPAYS…` and `Right_of_Use_Assets…`, which Saeed is adding manually.
 
