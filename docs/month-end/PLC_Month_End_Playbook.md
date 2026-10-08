@@ -530,6 +530,10 @@ Line numbers go in steps of 10000. The last line is 23100 Total prepayments.
   sales already recognised. Check the sale pairing before assuming an error.
 - **Excel publish failures:** amounts stored as text or `#####` fail. Republish only the failed
   rows.
+  - "Account No. cannot be found in G/L Account" means the sheet is linked to the wrong
+    company. Open Edit in Excel from the batch in the right company.
+  - "Direct Posting must be Yes" for PLC 23200: that account is BC's auto-deferral account.
+    Manual journals use 23100.
 - **Static accruals** (shredding, Pitney Bowes, corporate lead gen) need evidence or release.
   The 08/10 audit found invoiced months never knocked off (Time managers, ASCH property
   insurance, which BC deferral already covers) and lines with no invoice all year (lead gen,
@@ -666,6 +670,19 @@ Update this at the end of each session.
     01/04 (GJ000068 and GJ000069, £11,029.33).
   - Bonuses: the 2025/26 £65,500 + NI £11,016 is still unpaid six months on (no bonus in
     payroll). Neil to confirm.
+- **Remind Saeed once everything is posted (he asked 08/10):**
+  1. Medven Jul–Sep invoice is posted dated 30/09; otherwise PLC Sep shows a £40k credit.
+  2. Interactive Development and Healthcode Sep invoices: none dated 30/09 on top of the
+     accrual.
+  3. Neil: is the 2025/26 bonus (£65.5k + NI) being paid?
+  4. James: who insures the ASCH vehicles (£5,071)? Do the Pitney 01/04 DDs have invoices?
+  5. ASCH and PMI TBs: PMI 34200 £5,807 debit; ASCH 23200 AWG Portal double release
+     (£11,029.33).
+  6. ASCH recharge invoices to PLC (copies of SI000042/43) and the PLC purchase side, dated
+     30/09.
+  7. Fresh G/Ls for all three to verify the postings. Then the invoice accrual, NRVAT and fund
+     journals, the PMI payroll and AMI recharge, recs, and the MA.
+  8. Drive: archive the final packs and schedules only.
 - **Drive:** `PLC > 2026-2027 > 06 September 26`. Drafts uploaded except
   `P06_ACCRUALS_PREPAYS…` and `Right_of_Use_Assets…`, which Saeed is adding manually.
 
