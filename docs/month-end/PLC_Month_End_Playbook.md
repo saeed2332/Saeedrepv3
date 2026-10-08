@@ -683,6 +683,28 @@ Update this at the end of each session.
   7. Fresh G/Ls for all three to verify the postings. Then the invoice accrual, NRVAT and fund
      journals, the PMI payroll and AMI recharge, recs, and the MA.
   8. Drive: archive the final packs and schedules only.
+- **08/10/2026 post-posting review (fresh G/Ls 20:43–20:47):**
+  - All the original pack tabs are posted. P1, A1 and M3 went in as the pre-audit versions
+    (RGJ000211, RGJ000175, RGJ000098). The deltas are in
+    `September_2026_Fixes_after_posting_08Oct.xlsx`:
+    - F1 PLC delta: £43,402.44, including the Medven £60k accrual (the invoice is still not
+      posted).
+    - F2 PLC fixes:
+      - GJ000544 duplicated the ROU journal RGJ000217.
+      - 35300 true-up of £442.10 to the schedule (£5,636.50).
+      - Pension reclass of £8,859.10: the April and May contribution DDs had been expensed to
+        61500.
+    - F3 ASCH delta: property insurance plus the accrued income.
+    - F4 PMI delta: £18,706.80.
+  - Not yet raised: the ASCH Sep recharge SIs (copies of SI000042/43) and the PLC purchase
+    side, plus the PMI→AMI recharge (copy of SI000015, £3,528.45).
+  - PLC has never booked the ASCH fixed £744/month invoices (SI000024/25/29/40/42). This is an
+    intercompany rec item.
+  - James changed GJ000542 into a receipt (GJ000543 credits 51300 £4,550). Ask whether the
+    30/09 Barclays £5,460 was money in or out; if out, it should pay Medven PI028192.
+  - ASCH PI000298 £2,303.97 is "Spaces (Northgate House, Bath)", a new cost from September.
+    Ask what it is.
+  - PLC 24100 carries £193.9k outside the month-end journals. Reconcile it in Step 12.
 - **Drive:** `PLC > 2026-2027 > 06 September 26`. Drafts uploaded except
   `P06_ACCRUALS_PREPAYS…` and `Right_of_Use_Assets…`, which Saeed is adding manually.
 
