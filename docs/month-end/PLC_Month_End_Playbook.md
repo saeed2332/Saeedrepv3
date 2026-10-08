@@ -156,6 +156,17 @@ Invoices. Revenue or cost stuck there distorts the month and the invoice accrual
   Market, registration fees, Porsche storage, Stella cleaning, ASCH telephone, the £500
   retainer, TMD payroll fee and Bupa. Release accruals that have been invoiced. Static balances
   get flagged VERIFY.
+- **Accrual audit (every month, all three companies, before the journal):**
+  1. On the TB, the accruals account (PLC 34100, ASCH/PMI 34200) must be nil before this month's
+     journal, because every line is RV. Any residue is a non-reversing journal that was never
+     released.
+  2. For every line, find the supplier's invoices wherever they post (e.g. Time managers
+     invoices go to 66300, not the 65850 accrual line). Knock off each invoice by the **service
+     month in its description**, not its posting date.
+  3. A line that is the same amount every month never hits the P&L. With no invoice for 3+
+     months it is a stale balance: release it unless there's a contract or invoice.
+  4. Back-dated suppliers (Interactive Development, Healthcode, Medven): their invoice is dated
+     the month end it covers. Check for a 30th/31st-dated posting before posting the journal.
 - **Request:** R1 G/L export (latest) and R6 Purchase Invoices posted next month but dated this
   month (late invoices).
 - **HOLD items:** bonuses + NI, Medven/PSP £20k/month, Class 1A. Never in the journal without
@@ -520,6 +531,9 @@ Line numbers go in steps of 10000. The last line is 23100 Total prepayments.
 - **Excel publish failures:** amounts stored as text or `#####` fail. Republish only the failed
   rows.
 - **Static accruals** (shredding, Pitney Bowes, corporate lead gen) need evidence or release.
+  The 08/10 audit found invoiced months never knocked off (Time managers, ASCH property
+  insurance, which BC deferral already covers) and lines with no invoice all year (lead gen,
+  Shield HR, PMI Kindred advertising/Rapid Quote/app dev £18,706.80).
 - **Uploads:** the Drive connector uploads small files reliably. For large workbooks (>25KB)
   ask Saeed to drag them into the folder.
 
@@ -529,7 +543,7 @@ Line numbers go in steps of 10000. The last line is 23100 Total prepayments.
 
 Update this at the end of each session.
 
-### September 2026 (P06) – in progress (as of 02/10/2026)
+### September 2026 (P06) – in progress (as of 08/10/2026)
 - [x] Step 2 recharges: Hood Street POSTED 30/09 – SI028241 ACS / SI028242 AMI, £8,597.68 + £1,719.54 VAT each (1p over £17,195.35; ext refs reuse -002, no action). SI028129 ACS £60,753.78, SI028130 AMI £4,726.10, SI028131 TMD £221.67
   posted 30/09. **Hood Street recharge NOT yet raised** (ACS £8,597.67 / AMI £8,597.68 + 20%
   VAT).
@@ -634,6 +648,24 @@ Update this at the end of each session.
   - PMI: STRIPE from the P06 recon, accruals, broker commission £64,590.76, cyber prepayment
     £359. Payroll and the AMI recharge wait for September payroll. Howden PI000107 £44,553.22
     is unpaid (payment reversed). Projected profit ~£4.2k (Aug £4.7k).
+- **08/10/2026 accrual audit (all three companies):**
+  - PLC 34100 is nil at 30/09 before the September journal (TB), so nothing is stuck. ASCH and
+    PMI need their TBs to confirm.
+  - PLC P1 is now £145,300.92 (was £161,898.48):
+    - Time managers cut to £137.33 on 66300 (invoiced to August).
+    - Pitney Bowes cut to £2,800 (the 01/04 DDs with no invoice).
+    - Lead gen £11,000 and Shield HR £1,500 released.
+    - Tab P1b is a delta if the old P1 was already posted.
+  - ASCH A1 is now £26,989.19:
+    - Property insurance £3,429.42 released (duplicate of the deferred landlord invoices).
+    - PLC telephone accrued income removed (Saeed raising the SI copied from SI000043).
+    - Vehicle insurance £5,071 kept, with a question to James.
+  - PMI M3 £18,706.80 released and the tab removed. The historic 34200 £5,807 debit
+    (GJ000155) is to be checked on the TB.
+  - Also check on the TB: the ASCH 23200 AWG Portal prepayment, possibly released twice on
+    01/04 (GJ000068 and GJ000069, £11,029.33).
+  - Bonuses: the 2025/26 £65,500 + NI £11,016 is still unpaid six months on (no bonus in
+    payroll). Neil to confirm.
 - **Drive:** `PLC > 2026-2027 > 06 September 26`. Drafts uploaded except
   `P06_ACCRUALS_PREPAYS…` and `Right_of_Use_Assets…`, which Saeed is adding manually.
 
