@@ -690,6 +690,15 @@ Update this at the end of each session.
     01/04 (GJ000068 and GJ000069, £11,029.33).
   - Bonuses: the 2025/26 £65,500 + NI £11,016 is still unpaid six months on (no bonus in
     payroll). Neil to confirm.
+- **Bonus accrual history (from the FY25/26 G/L, Jul 25–Mar 26):**
+  - FY25/26 accrued £8,750/m + £1,313 NI (£105k + £15.8k a year). The Apr–Jun 25 portion
+    came in as opening balance OB04JUL25 (£30,189).
+  - Paid: Christmas bonus Dec 25, £39,500 gross + £4,740 er NI (net £26,227, bulk faster
+    payment 10/12/25, reclassed GJ000227/229/230).
+  - Carried forward at 31/03/26: £65,500 + £11,016 NI = £76,516. Still unpaid at 30/09/26.
+  - FY26/27: Apr +£8,750/£1,313, then £3,843/£428 a month from May. Charged Apr–Sep £31,418.
+    Balance at 30/09 £107,934.
+  - The NI on the b/f looks about £1.2k high (15% of £65.5k = £9,825).
 - **PMI → AMI staff recharge (SOP "Month end – General" 1.02/1.03):**
   - PMI has one employee and the whole cost is recharged to AMI: gross pay (61150), employer
     NI (61300), employer pension (61350), plus the £50 TMD payroll fee (65875). No VAT. Copy the
