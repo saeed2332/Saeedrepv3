@@ -690,6 +690,16 @@ Update this at the end of each session.
     01/04 (GJ000068 and GJ000069, £11,029.33).
   - Bonuses: the 2025/26 £65,500 + NI £11,016 is still unpaid six months on (no bonus in
     payroll). Neil to confirm.
+- **PMI → AMI staff recharge (SOP "Month end – General" 1.02/1.03):**
+  - PMI has one employee and the whole cost is recharged to AMI: gross pay (61150), employer
+    NI (61300), employer pension (61350), plus the £50 TMD payroll fee (65875). No VAT. Copy the
+    last SI.
+  - Apr–Aug recharges equal the PMI payroll exactly.
+  - Payroll fell in July: gross £14.1k → £2.8k. The fixed £750/£393.75 pension stopped, PAYE fell
+    from ~£5.3k to nil, and a student-loan deduction appeared. That looks like a different (new)
+    employee, not Nathan (the SOP names Nathan).
+  - Ask Neil who is on PMI payroll from July and confirm they work for AMI.
+  - Sep recharge: £3,528.45.
 - **Remind Saeed once everything is posted (he asked 08/10):**
   1. Medven Jul–Sep invoice is posted dated 30/09; otherwise PLC Sep shows a £40k credit.
   2. Interactive Development and Healthcode Sep invoices: none dated 30/09 on top of the
