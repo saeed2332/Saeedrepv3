@@ -142,8 +142,11 @@ Invoices. Revenue or cost stuck there distorts the month and the invoice accrual
     - TMD/Money Doctors: Christopher Smith £132.10 + Olivia Smith £175.08 = £307.18.
   - Bruce Braithwaite (ASCH contractor, couple, £462.94/m) is on the PLC scheme. Ask whether to
     recharge ASCH.
-  - The September cover invoice was never posted (DD paid 03/09; Sep is accrued). When it's
-    found, post it dated 01/10 with no deferral.
+  - The September cover invoice is **D22935614** (issued 02/08, £2,548.06, DD 03/09). Post it
+    dated 30/09 with no deferral; F1 releases the Sep accrual.
+  - Bupa issues each invoice about a month ahead of its cover month (issue date in M−1). Renewal
+    pattern: no invoice in September; the first renewal invoice covers Oct + Nov, then monthly
+    from 01/12 at £3,581.29. The annual 2026/27 cost is £42,975.48. No DD in October.
 - **BC:** Copy Document (B7) with **Include Header ON, Recalculate Lines OFF**.
 - **Check:** confirm all of them in a fresh G/L export (amount, VAT, dates, ext. ref).
 - **Budget check:** compare the recharges with the management-accounts budget. The Sep 26
