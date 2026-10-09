@@ -727,6 +727,12 @@ Update this at the end of each session.
   - ASCH PI000298 £2,303.97 is "Spaces (Northgate House, Bath)", a new cost from September.
     Ask what it is.
   - PLC 24100 carries £193.9k outside the month-end journals. Reconcile it in Step 12.
+- **09/10/2026:**
+  - ASCH SI000044 (Sep calls, £4,679.86) and SI000045 (Sep fixed, £744) are posted correctly.
+  - PLC: Interactive Development PI028433 (INV100832, £5,460) was posted dated 30/09, so F1 now
+    releases that accrual. F1 = £35,394.38, 34100 → £197,292.86.
+  - Bupa D22935614 (Sep cover) is confirmed **not** in BC; the 03/09 DD is unapplied on the
+    vendor.
 - **Drive:** `PLC > 2026-2027 > 06 September 26`. Drafts uploaded except
   `P06_ACCRUALS_PREPAYS…` and `Right_of_Use_Assets…`, which Saeed is adding manually.
 
