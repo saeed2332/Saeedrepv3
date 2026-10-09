@@ -138,8 +138,9 @@ Invoices. Revenue or cost stuck there distorts the month and the invoice accrual
   budget assumes PLC→ACS £61.5k plus a £1.5k ASCH charge (group net £60k); confirm whether it
   went live.
 - **Known:**
-  - ASCH June fixed recharge SI000037 was credited (SC000007) and never re-raised. Raised with
-    the September ones.
+  - ASCH June fixed recharge SI000037 (dated 01/07) was credited (SC000007) when invoice dating
+    moved from "1st of next month" to "in the month". There's one fixed charge in each month
+    Apr–Aug, so June looks deliberately dropped. **Not re-raised.** Ask James.
   - PLC has not posted the ASCH fixed £744 invoices (Mar–Aug). Clear these in the intercompany
     rec.
   - Recalculate Lines ON created £12k VAT on the £60k ACS recharge (Aug).
