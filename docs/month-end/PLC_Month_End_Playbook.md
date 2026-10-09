@@ -132,6 +132,18 @@ Invoices. Revenue or cost stuck there distorts the month and the invoice accrual
 - **Bupa first:** post the Bupa purchase invoice (deferral to 23200) or, if it hasn't arrived,
   accrue the premium (Step 3). Bupa renews in Sep/Oct, so check the Group Invoice Detail for new
   per-person prices.
+- **Bupa 2026/27 renewal (from 01/10/26, invoice D23044361, issued 08/10/26):**
+  - The invoice covers Oct + Nov 2026: £7,162.58 gross, collected 07/11. That's
+    £3,581.29/month, up from £2,548.06 (+41%).
+  - New monthly recharges (gross ÷ 2):
+    - ACS: Kaye Drew £538.53, Marie Lee £462.94, Matthew Parks £75.62.
+    - AMI: NE (Nathan Edwards) £183.60, JG (Josh Green) £183.60, SD (Suzanne Dunleavy)
+      £132.52, JM (Jamie Mcmahon) £223.01.
+    - TMD/Money Doctors: Christopher Smith £132.10 + Olivia Smith £175.08 = £307.18.
+  - Bruce Braithwaite (ASCH contractor, couple, £462.94/m) is on the PLC scheme. Ask whether to
+    recharge ASCH.
+  - The September cover invoice was never posted (DD paid 03/09; Sep is accrued). When it's
+    found, post it dated 01/10 with no deferral.
 - **BC:** Copy Document (B7) with **Include Header ON, Recalculate Lines OFF**.
 - **Check:** confirm all of them in a fresh G/L export (amount, VAT, dates, ext. ref).
 - **Budget check:** compare the recharges with the management-accounts budget. The Sep 26
