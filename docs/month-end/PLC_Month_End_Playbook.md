@@ -127,6 +127,8 @@ Invoices. Revenue or cost stuck there distorts the month and the invoice accrual
 | AMI | last month's rates/Bupa invoice | 66100 rates £4,200 (VERIFY vs 11th-floor bill) + Bupa NE/JG/SD/JM | No VAT. Ext AMI188 |
 | TMD | last month's Money Doctors invoice | 61600 Bupa (Christopher & Olivia Smith) | No VAT. Ext AS172 |
 | ACS + AMI | last month's "50% of Mike's retainer" invoices | 65500, 50/50 of Mike Davies' (Hood Street) retainer + expenses from his latest invoice | **20% VAT**. Ext MD-ACS-nnn / MD-AMI-nnn |
+| PLC (raised in **ASCH**) | SI000042 (fixed) | 66500 Telephones £120 + 66175 Property Service Charges £500 | 20% VAT (£744). Ext `MON YY`. PLC posts the matching purchase invoice to 66400. |
+| PLC (raised in **ASCH**) | SI000043 (call charges) | 66500 = all CTALK purchase invoices posted in ASCH that month, less £120. One-off CTALK items go on a separate line (as in SI000039). | 20% VAT. Ext `MONYY`. PLC copies PI026791. Never accrue these: raise the SI dated the month end. |
 - **Bupa first:** post the Bupa purchase invoice (deferral to 23200) or, if it hasn't arrived,
   accrue the premium (Step 3). Bupa renews in Sep/Oct, so check the Group Invoice Detail for new
   per-person prices.
@@ -136,6 +138,10 @@ Invoices. Revenue or cost stuck there distorts the month and the invoice accrual
   budget assumes PLC→ACS £61.5k plus a £1.5k ASCH charge (group net £60k); confirm whether it
   went live.
 - **Known:**
+  - ASCH June fixed recharge SI000037 was credited (SC000007) and never re-raised. Raised with
+    the September ones.
+  - PLC has not posted the ASCH fixed £744 invoices (Mar–Aug). Clear these in the intercompany
+    rec.
   - Recalculate Lines ON created £12k VAT on the £60k ACS recharge (Aug).
   - Sep SI028129 reused ext ref ACS095. No action is needed, because the invoice number is the
     unique reference.
