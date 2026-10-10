@@ -690,6 +690,20 @@ Update this at the end of each session.
     01/04 (GJ000068 and GJ000069, £11,029.33).
   - Bonuses: the 2025/26 £65,500 + NI £11,016 is still unpaid six months on (no bonus in
     payroll). Neil to confirm.
+- **Business Central cost (all in PLC 65450, not recharged):**
+  - Partner invoices are numbered PSIxxxxxx. October 26 (PSI144309) is £1,413.96 net a month:
+    - licences £774.96
+    - support (11–29 users) £240
+    - Cloud Control £149
+    - Clever Essentials £125
+    - Essentials Addition £75
+    - Banking Exports £50
+  - That's about £17.0k a year net, up from £941/m in April. The licence went £621→£710→£775,
+    and three add-ons (£250/m) started in July.
+  - Invoices arrive about a month ahead ("Aug26" posted 01/07, "Oct26" posted 15/09) with no
+    deferral. Prepay the next month's at month end (Sep: F5, £1,413.96).
+  - "Tokens" £500/m (EU- invoices), the "Implementation Fee/Portal" £5k and Staffology are
+    **not** BC.
 - **Bonus accrual history (from the FY25/26 G/L, Jul 25–Mar 26):**
   - FY25/26 accrued £8,750/m + £1,313 NI (£105k + £15.8k a year). The Apr–Jun 25 portion
     came in as opening balance OB04JUL25 (£30,189).
