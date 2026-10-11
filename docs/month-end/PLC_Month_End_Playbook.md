@@ -764,8 +764,54 @@ Update this at the end of each session.
     releases that accrual. F1 = £35,394.38, 34100 → £197,292.86.
   - Bupa D22935614 (Sep cover) is confirmed **not** in BC; the 03/09 DD is unapplied on the
     vendor.
-- **Drive:** `PLC > 2026-2027 > 06 September 26`. Drafts uploaded except
-  `P06_ACCRUALS_PREPAYS…` and `Right_of_Use_Assets…`, which Saeed is adding manually.
+- **10/10–11/10/2026 (Finance Control Centre session):**
+  - The Finance Control Centre (FCC, Railway) is connected to production Business Central in
+    read-only mode; all three companies verified; posting profiles approved by Saeed in writing
+    (10/10). Posting goes through FCC with written approval recorded against Saeed's message.
+  - **Sandbox posting test blocked:** lines create fine, but posting fails on Saeed's Sandbox
+    user permissions – "Sorry, the current permissions prevented the action. (TableData 9093440
+    Document Delivery Setup CDDTMN Document Delivery Setup Read: Clever Document Delivery)".
+    Saeed to add the Clever Document Delivery permission set (or SUPER) to his **Sandbox** user,
+    or choose to skip the sandbox and post straight to production. **Nothing posted yet.**
+  - Fix journals in FCC (validated, awaiting approval/posting): F1 PLC ACCSEP26B £35,394.38;
+    F2 PLC PLCFIXSEP26 (£442.10 line recoded 63100 → 66500: it is the hot-drinks machine rental
+    PI009583 sitting in 35300); F3 ASCH ACCSEP26B; F4 PMI PMIRECSEP26B; F5 PLC PrepaySep26B
+    £1,413.96 (approved in-app); **new F6** ASCH ICSEP26 Dr 66150 / Cr 35100 £3,061.69 (Sep
+    credit-card recharge from PLC GJ000540, missing on the ASCH side); **new F7** PLC
+    PLCFIXSEP26B Dr 23100 / Cr 35300 £660.00 (reverses line 3 of GJ000547 – the Apogee Oct/Nov
+    "deferral" was credited to 23100 although it sits in 23200, BC's auto-deferral, which cannot
+    be posted to directly).
+  - Step 12 done from the live ledger: `Balance_Sheet_Reconciliations_September_2026.xlsx`
+    (Schedules folder). Key findings:
+    - Intercompany PLC–ASCH difference £14,795.77 fully explained: Sep recharge £3,061.69 (F6);
+      PLC PM009303 30/06 netted £12,750.43 of ASCH purchase-ledger balance with no ASCH entry;
+      ASCH CA000026/27/29 + PM000113 applied £3,067.53 of PLC receivables with no PLC entry;
+      Mar-26 recharge booked twice in ASCH (GJ000063 = GJ000064 £1,746.84, vs PLC £1,454.18).
+    - PLC–PMI difference £393.84 = Cardnet £477.84 (GJ000472, PLC only) less Sinch Mailgun
+      £28 × 3 (PMI to book £84).
+    - PLC 24100 carries AUDACCR0326 £193,860 and 34300 £112,757 (audit adjustment, never
+      released) – auditors' schedule needed. 21400 £3,000,000 = the two fixed deposits ✓.
+      Lloyds 21150 is nil (5,208 entries) – confirm closed. 31010 trade payables is a £7,351.47
+      debit (includes PM009303). 23200 auto-deferrals £69,814.27 include Hood St recharge
+      £11,160 (PI014931) and 2025 residues with no releases.
+    - ASCH 35300 £50,784.95 = the final quarter's rent not yet invoiced (schedule ~nil after it);
+      F&F Sep depreciation over by £90.15 (PIN000646 fully depreciated); PC000017 credit £1,095.34
+      relates to the PI000123 laptop (remove from FAR); FAR vs G/L accumulated depreciation gaps
+      carried from August. 23200 holds the £17,784 Spaces deposit (reclass to 24010?).
+    - PMI 34200 after F4 is a £4,507 debit because GJ000155 £5,807 (30/04) was never reversed.
+    - Apogee: quarterly charge rose to £1,039.24 from the 4/6/26 quarter (schedule £989.76) –
+      remeasure; October reminder: BC releases £346.41 to 63100 on 01/10 and 01/11 (PI026650),
+      move each to 35300; from the Dec-26 invoice code the rental line to 35300, no deferral.
+  - Schedules uploaded to Drive `06 September 26 > Schedules`: PLC_P06_ACCRUALS_PREPAYS,
+    Right_of_Use_Assets (PLC + ASCH), PLC_Accrued_Interest FINAL (DRAFT marked SUPERSEDED),
+    PLC payroll / fund control / non-recoverable VAT support, ASCH_P06_ACCRUALS_PREPAYS,
+    ASCH_FA_Rec, PMI_P06_Accruals_and_Prepayments, Balance_Sheet_Reconciliations. The fix pack
+    `September_2026_Fix_Journals_F1-F7.xlsx` goes to Journals after posting.
+  - Still outstanding: Sep invoice accrual (34300) after the Gus run; NR VAT Q/E Sep true-up
+    (not a forecast provision); bank recs; customer/vendor ledgers (R5); FCC trial balance via
+    the reportsFinance API is not available in this BC version (account totals used instead).
+- **Drive:** `PLC > 2026-2027 > 06 September 26`. All September schedules are in `Schedules`
+  (11/10); journals packs in `Journals`.
 
 ---
 
